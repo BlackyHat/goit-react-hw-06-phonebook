@@ -1,8 +1,11 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
+
+import { addContacts } from 'redux/contactsSlice';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FormBetter } from './ContactForm.styled';
 import { BsPersonPlus } from 'react-icons/bs';
-import { nanoid } from 'nanoid';
 
 const schemaAddContact = Yup.object().shape({
   name: Yup.string().min(4).max(32).required(),
@@ -14,11 +17,24 @@ const initialValues = {
   number: '',
 };
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
+  const dispatch = useDispatch();
+  const { contacts } = useSelector(getContacts);
+
   const handleSubmit = (values, { resetForm }) => {
-    const formdata = values;
-    onSubmit({ id: nanoid(), ...formdata });
+    addContact(values);
     resetForm();
+  };
+
+  const addContact = newContact => {
+    checkDouble(newContact)
+      ? alert(`${newContact.name} is already exist in contacts`)
+      : dispatch(addContacts(newContact));
+  };
+  const checkDouble = newContact => {
+    return contacts.some(
+      ({ name }) => name.toLowerCase() === newContact.name.toLowerCase()
+    );
   };
 
   return (
@@ -27,6 +43,7 @@ export default function ContactForm({ onSubmit }) {
       validationSchema={schemaAddContact}
       onSubmit={handleSubmit}
     >
+      {}
       <FormBetter>
         <label>
           Name
