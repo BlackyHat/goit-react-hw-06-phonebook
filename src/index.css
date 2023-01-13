@@ -19,3 +19,28 @@ code {
 ::after {
   box-sizing: border-box;
 }
+
+body {
+  background-color: var(--background-color);
+  transition: color 500ms linear, background-color 500ms linear;
+}
+
+/* theme style */
+html[data-theme='dark'] {
+  --text-color: rgb(10, 203, 247);
+  --color: rgb(10, 203, 247);
+  --background-color: #252525;
+  --placeholder-color: rgb(255, 255, 255);
+  --background-input-color: #888888;
+  --background-input-border-color: #908f8f;
+  --bottom-color: rgb(59, 141, 149);
+}
+
+html[data-theme='light'] {
+  --text-color: #000000;
+  --background-color: #faf3f3;
+  --background-input-color: #ffffff;
+  --background-input-border-color: #969696;
+
+  --bottom-color: rgb(59, 141, 149);
+}

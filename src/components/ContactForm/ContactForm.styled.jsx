@@ -18,7 +18,7 @@ export const FormBetter = styled(Form)`
     font-size: 16px;
     gap: 4px;
     & div {
-      color: red;
+      color: #c87f7f;
       font-size: 12px;
       position: absolute;
       bottom: -16px;
@@ -28,7 +28,14 @@ export const FormBetter = styled(Form)`
 
   & input {
     width: 50%;
+    background-color: var(--background-input-color);
+    border: 1px solid var(--background-input-border-color);
   }
+
+  input::placeholder {
+    color: var(--placeholder-color);
+  }
+
   & button {
     display: flex;
     justify-content: center;

@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilterValue } from 'redux/selectors';
-
+//
+import Avatar from 'avataaars';
+import { generateRandomAvatarOptions } from '../Avatar/Avatar';
+//
 import { deleteContacts } from 'redux/contactsSlice';
 import PropTypes from 'prop-types';
 
@@ -33,10 +36,14 @@ export default function ContactList() {
       {filteredContactsList.map(({ id, name, number }) => {
         return (
           <FilteredListItem key={id}>
-            <p>
-              <BsTelephoneForward />
-              {name + ': ' + number}{' '}
-            </p>
+            <Avatar
+              style={{ width: '100px', height: '100px' }}
+              avatarStyle="Circle"
+              {...generateRandomAvatarOptions()}
+            />
+            <BsTelephoneForward />
+            <p>{name}</p>
+            <p>{number}</p>
             <DeleteBtn type="button" onClick={() => onDeleteContact(id)}>
               delete <BsPersonX size={14} />
             </DeleteBtn>

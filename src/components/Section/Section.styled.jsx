@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const SectionItem = styled.section`
-  width: 360px;
+  width: 80%;
   text-align: center;
-  margin-left: 8px;
+  margin: 0 auto;
 `;
 
 export const SectionTitle = styled.h2`
@@ -12,4 +12,5 @@ export const SectionTitle = styled.h2`
   padding: 16px;
   text-align: left;
   font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
 `;
